@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="currency_array">
+        <item>AED</item>
+        <item>ARS</item>
+        <item>AUD</item>
+        <item>BRL</item>
+        <item>BSD</item>
+        <item>CAD</item>
+        <item>CHD</item>
+        <item>EGP</item>
+        <item>EUR</item>
+        <item>GHS</item>
+        <item>GPB</item>
+        <item>HKD</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>JPY</item>
+        <item>KES</item>
+        <item>NGN</item>
+        <item>SOS</item>
+        <item>USD</item>
+        <item>ZWL</item>
+    </string-array>
+</resources>
