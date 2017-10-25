@@ -67,9 +67,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String ETH_ZAR = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ZAR";
     String BTC_NGN = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=NGN";
     LinearLayout can;
-    String crypto;
-
+    String crypto = "BTC";
+    String req_url;
     String bitcoin = "BTC";
+
 
 
     @Override
@@ -119,72 +120,88 @@ public class MainActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-
-        String req_url = null;
-
-        /*if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "AED")) req_url = BTC_AED;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "ARS")) req_url = BTC_ARS;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "AUD")) req_url = BTC_AUD;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "BRL")) req_url = BTC_BRL;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "BSD")) req_url = BTC_BSD;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "CAD")) req_url = BTC_CAD;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "CNH")) req_url =* BTC_CNH;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "EGP")) req_url = BTC_EGP;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "EUR")) req_url = BTC_EUR;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "GHS")) req_url = BTC_GHS;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "GPB")) req_url = BTC_GPB;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "HKD")) req_url = BTC_HKD;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "ILS")) req_url = BTC_ILS;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "INR")) req_url = BTC_INR;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "JPY")) req_url = BTC_JPY;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "KES")) req_url = BTC_KES;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "NGN")) req_url = BTC_NGN;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "PHP")) req_url = BTC_PHP;
-        if ((crypto == "BTC") && (spinner.getSelectedItem().toString() == "USD")) req_url = BTC_USD;*/
-        //if ((crypto.equals(bitcoin)) && ((spinner.getSelectedItem().toString().equals("ZAR"))) ){req_url = BTC_ZAR;}
-        if ((crypto != null) && (crypto.equals("BTC"))) req_url = BTC_NGN;
+        //Volley requestQueue init
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        //Request button init
+        Button execute = (Button) findViewById(R.id.button);
+        execute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
+                try {
+
+                    if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("AED")))
+                        req_url = BTC_AED;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("ARS")))
+                        req_url = BTC_ARS;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("AUD")))
+                        req_url = BTC_AUD;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("BRL")))
+                        req_url = BTC_BRL;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("BSD")))
+                        req_url = BTC_BSD;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("CAD")))
+                        req_url = BTC_CAD;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("CNH")))
+                        req_url = BTC_CNH;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("EGP")))
+                        req_url = BTC_EGP;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("EUR")))
+                        req_url = BTC_EUR;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("GHS")))
+                        req_url = BTC_GHS;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("GPB")))
+                        req_url = BTC_GPB;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("HKD")))
+                        req_url = BTC_HKD;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("ILS")))
+                        req_url = BTC_ILS;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("INR")))
+                        req_url = BTC_INR;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("JPY")))
+                        req_url = BTC_JPY;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("KES")))
+                        req_url = BTC_KES;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("NGN")))
+                        req_url = BTC_NGN;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("PHP")))
+                        req_url = BTC_PHP;
+                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("USD")))
+                        req_url = BTC_USD;
+                    else if ((crypto.contentEquals("BTC")) && ((spinner.getSelectedItem().toString().contentEquals("ZAR")))) {
+                        req_url = BTC_ZAR;
+                    }
+
+
+                } finally {
+                    //JSONObjectRequest Setup
         final JsonObjectRequest jsrequest = new JsonObjectRequest(Request.Method.GET, req_url, null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
                 TextView mlcd = (TextView) findViewById(R.id.display);
-                mlcd.setText((response.toString().replace("{", "").replace("}", "").replace("\"", "")));
+                mlcd.setText(crypto + "->" + (response.toString().replace("{", "").replace("}", "").replace("\"", "")));//whacked at the JSON string object with a spanner till it looked okay
 
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, bitcoin + " " + crypto + " ", Toast.LENGTH_SHORT).show();
-                // TODO Auto-generated method stub
-
-
+                Toast.makeText(MainActivity.this, "Error, Check connection and retry", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-        //Volley request queue init
-        final RequestQueue queue = Volley.newRequestQueue(this);
-        Button execute = (Button) findViewById(R.id.button);
-        execute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // add to request queue
+                    // add to volley request queue
                 queue.add(jsrequest);
                 Toast.makeText(MainActivity.this, "Checking", Toast.LENGTH_SHORT).show();
-                /*ProgressDialog progress = new ProgressDialog(getApplication());
-                progress.setMessage("One Moment....");
-                progress.show();*/
-
+                }
             }
         });
-
-
+    }
     }
 
-}
+
+
 
 
 
