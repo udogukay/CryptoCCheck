@@ -11,6 +11,7 @@
         android:id="@+id/canvas_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bitcoinlogo"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -28,10 +29,10 @@
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="15"
-                android:text="WELCOME"
+                android:text="@string/welcome_text"
                 android:textAlignment="viewEnd"
                 android:textColor="#00FF00"
-                android:textSize="40sp" />
+                android:textSize="40dp" />
 
 
         </LinearLayout>
@@ -69,9 +70,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/toggle_widget_background"
                     android:button="@null"
-                    android:gravity="center"
                     android:checked="true"
-                    android:text="BTC"
+                    android:gravity="center"
+                    android:text="@string/BTC_label"
                     android:textColor="@color/white" />
 
 
@@ -86,7 +87,7 @@
                     android:background="@drawable/toggle_widget_background"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="ETH"
+                    android:text="@string/ETH_label"
                     android:textColor="@color/white" />
             </RadioGroup>
 
@@ -96,12 +97,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:textSize="50sp"
-                android:dropDownWidth="wrap_content"
-                android:spinnerMode="dropdown"
+                android:dropDownWidth="60dp"
                 android:gravity="center_horizontal"
                 android:paddingEnd="25sp"
-                android:paddingStart="25sp" />
+                android:paddingStart="25sp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <Button
@@ -109,9 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="20dp"
             android:hapticFeedbackEnabled="true"
-            android:text="Request"/>
+            android:padding="20dp"
+            android:text="@string/button_label" />
 
     </LinearLayout>
 </LinearLayout>

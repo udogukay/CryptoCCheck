@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CryptoCCheck</string>
+    <string name="welcome_text">welcome</string>
+    <string name="button_label">get price</string>
+    <string name="BTC_label">BTC</string>
+    <string name="ETH_label">ETH</string>
 </resources>

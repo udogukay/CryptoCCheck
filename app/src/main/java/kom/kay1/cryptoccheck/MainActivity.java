@@ -22,8 +22,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
-    //JSON URL List-BITCOIN
 
+
+    //JSON URL List-BITCOIN
     public static final String BTC_AED = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=AED";
     public static final String BTC_ARS = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=ARS";
     public static final String BTC_AUD = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=AUD";
@@ -65,12 +66,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String ETH_PHP = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=PHP";
     public static final String ETH_USD = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD";
     public static final String ETH_ZAR = "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ZAR";
-    String BTC_NGN = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=NGN";
+    public static final String BTC_NGN = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=NGN";
     LinearLayout can;
     String crypto = "BTC";
     String req_url;
-    String bitcoin = "BTC";
-
 
 
     @Override
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Integrated bg image switch
                 can.setBackgroundResource(R.drawable.bitcoinlogo);
-                //String output for api input
                 crypto = "BTC";
             }
         });
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         eth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Integrated bg image switch
+                //Integrated background image switch
                 can.setBackgroundResource(R.drawable.etherumlogo);
                 //String output for api input
                 crypto = "ETH";
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.currencyspinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.currency_array, android.R.layout.simple_spinner_item);
+                R.array.currency_array, R.layout.customspinnerlayout);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
@@ -130,76 +128,118 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try {
+                    // BTC switch trigger and spinner governor
 
-                    if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("AED")))
+                    if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("AED")))
                         req_url = BTC_AED;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("ARS")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("ARS")))
                         req_url = BTC_ARS;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("AUD")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("AUD")))
                         req_url = BTC_AUD;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("BRL")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("BRL")))
                         req_url = BTC_BRL;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("BSD")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("BSD")))
                         req_url = BTC_BSD;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("CAD")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("CAD")))
                         req_url = BTC_CAD;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("CNH")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("CNH")))
                         req_url = BTC_CNH;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("EGP")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("EGP")))
                         req_url = BTC_EGP;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("EUR")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("EUR")))
                         req_url = BTC_EUR;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("GHS")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("GHS")))
                         req_url = BTC_GHS;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("GPB")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("GPB")))
                         req_url = BTC_GPB;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("HKD")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("HKD")))
                         req_url = BTC_HKD;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("ILS")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("ILS")))
                         req_url = BTC_ILS;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("INR")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("INR")))
                         req_url = BTC_INR;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("JPY")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("JPY")))
                         req_url = BTC_JPY;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("KES")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("KES")))
                         req_url = BTC_KES;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("NGN")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("NGN")))
                         req_url = BTC_NGN;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("PHP")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("PHP")))
                         req_url = BTC_PHP;
-                    else if ((crypto.contentEquals("BTC")) && (spinner.getSelectedItem().toString().contentEquals("USD")))
+                    else if ((crypto.contentEquals("BTC")) & (spinner.getSelectedItem().toString().contentEquals("USD")))
                         req_url = BTC_USD;
-                    else if ((crypto.contentEquals("BTC")) && ((spinner.getSelectedItem().toString().contentEquals("ZAR")))) {
+                    else if ((crypto.contentEquals("BTC")) & ((spinner.getSelectedItem().toString().contentEquals("ZAR"))))
                         req_url = BTC_ZAR;
-                    }
+                        // aaaand now ETH
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("AED")))
+                        req_url = ETH_AED;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("ARS")))
+                        req_url = ETH_ARS;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("AUD")))
+                        req_url = ETH_AUD;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("BRL")))
+                        req_url = ETH_BRL;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("BSD")))
+                        req_url = ETH_BSD;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("CAD")))
+                        req_url = ETH_CAD;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("CNH")))
+                        req_url = ETH_CNH;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("EGP")))
+                        req_url = ETH_EGP;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("EUR")))
+                        req_url = ETH_EUR;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("GHS")))
+                        req_url = ETH_GHS;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("GPB")))
+                        req_url = ETH_GPB;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("HKD")))
+                        req_url = ETH_HKD;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("ILS")))
+                        req_url = ETH_ILS;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("INR")))
+                        req_url = ETH_INR;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("JPY")))
+                        req_url = ETH_JPY;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("KES")))
+                        req_url = ETH_KES;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("NGN")))
+                        req_url = ETH_NGN;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("PHP")))
+                        req_url = ETH_PHP;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("USD")))
+                        req_url = ETH_USD;
+                    else if ((crypto.contentEquals("ETH")) & (spinner.getSelectedItem().toString().contentEquals("ZAR")))
+                        req_url = ETH_ZAR;
+                    else req_url = BTC_AED;
 
 
                 } finally {
                     //JSONObjectRequest Setup
-        final JsonObjectRequest jsrequest = new JsonObjectRequest(Request.Method.GET, req_url, null, new Response.Listener<JSONObject>() {
+                    final JsonObjectRequest jsrequest = new JsonObjectRequest(Request.Method.GET, req_url, null, new Response.Listener<JSONObject>() {
 
-            @Override
-            public void onResponse(JSONObject response) {
-                TextView mlcd = (TextView) findViewById(R.id.display);
-                mlcd.setText(crypto + "->" + (response.toString().replace("{", "").replace("}", "").replace("\"", "")));//whacked at the JSON string object with a spanner till it looked okay
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            TextView mlcd = (TextView) findViewById(R.id.display);
+                            mlcd.setText(crypto + " -> " + (response.toString().replace("{", "").replace("}", "").replace("\"", "")));//whacked at the JSON string object with a spanner till it looked okay
 
-            }
-        }, new Response.ErrorListener() {
+                        }
+                    }, new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, "Error, Check connection and retry", Toast.LENGTH_SHORT).show();
-            }
-        });
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(MainActivity.this, "Error, Check connection and retry", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     // add to volley request queue
-                queue.add(jsrequest);
-                Toast.makeText(MainActivity.this, "Checking", Toast.LENGTH_SHORT).show();
+                    queue.add(jsrequest);
+                    Toast.makeText(MainActivity.this, "Checking", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    }
-
+}
+//I Swear! I'm learning Kotlin!!! Object comparators suffer me!
 
 
 
